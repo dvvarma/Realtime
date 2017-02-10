@@ -1,0 +1,48 @@
+<html>
+<head>
+<script src="jquery-1.8.3.js"></script>
+<script>
+function varma(){
+  var sunny = new XMLHttpRequest();
+    sunny.open("GET", "Nameresponse.txt", true);
+	  sunny.send();
+  sunny.onreadystatechange = function() {
+    if (sunny.readyState == 4 && sunny.status == 200) {
+     document.getElementById("dvid").innerHTML = sunny.responseText;
+    }
+  };
+}
+
+function queryajax(){
+$.ajax({
+url:"Nameresponse.txt",
+success:function(result){
+$("#imgload").hide();
+$("#dvid").html(result);
+},
+beforeSend:function(){
+$("#imgload").show();
+//alert("beforesend");
+},
+error:function(err){
+alert(err);
+}
+
+});
+
+
+
+}
+
+
+
+
+</script>
+</head>
+<body>
+<div id="dvid">Hii</div>
+<input type="text" value=""/>
+<input type="button" value="GET" onClick="queryajax()"/>
+<div id="imgload"><img src="spinner.gif"></div>
+
+</body>

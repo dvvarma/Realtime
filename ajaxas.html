@@ -1,0 +1,28 @@
+<html>
+<head>
+
+<script>
+function varma(){
+  var sunny = new XMLHttpRequest();
+    sunny.open("GET", "Nameresponse.txt", true);
+	  sunny.send();
+  sunny.onreadystatechange = function() {
+    if (sunny.readyState == 4 && sunny.status == 200) {
+     document.getElementById("dvid").innerHTML = sunny.responseText;
+    }
+  };
+
+
+
+
+
+
+}
+</script>
+</head>
+<body>
+<div id="dvid">Hii</div>
+<input type="text" value=""/>
+<input type="button" value="GET" onClick="varma()"/>
+
+</body>

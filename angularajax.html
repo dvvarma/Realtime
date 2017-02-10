@@ -1,0 +1,39 @@
+<html>
+<head>
+<script src="angular.js"></script>
+<script>
+var varma = angular.module("varma",[]); //it gives varma object
+ 
+ varma.controller("mycontroller",function($scope,$http){
+ $scope.getdata = function(){
+ 
+ $http({
+  method: 'GET',
+  url: "response.json"
+   }).then(function successCallback(r) {
+   $scope.resArry = r.data;
+  }, function errorCallback(r) {
+ 
+  });
+  
+ 
+}
+
+});
+</script>
+</head>
+<body ng-app="varma" ng-controller="mycontroller">
+
+<input type="button" ng-click="getdata()" value="GET">
+
+<table ng-show="resArry.length>0">
+<tr><th>Name</th><th>City</th><th>Country</th></tr>
+<tr ng-repeat="jsn in resArry"><td>{{jsn.Name}}</td><td>{{jsn.City}}</td><td>{{jsn.Country}}</td></tr>
+
+
+</table>
+
+</body>
+ 
+
+</html>

@@ -1,0 +1,40 @@
+ <head> 
+
+<script src="angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+
+ 	<script>
+ var module = angular.module("Varma", ['ngRoute']);
+
+    module.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+                when('/route1', {
+                    templateUrl: 'About.html'
+                                }).
+                when('/route2', {
+                    templateUrl: 'Home.html'
+                   }).
+				       when('/route3', {
+                    templateUrl: 'Contact.html'
+                   }).
+                otherwise({
+                    redirectTo: '/'
+                });
+        }]);
+		</script>
+
+</head>
+<div ng-app="Varma" > 
+  
+  <div ng-include="'menu.html'"></div>
+  
+  
+  <div style="height:500px;width:100%;background-color:pink" ng-view></div>
+  
+  
+  <div>@copy rights</div>
+</div>
+
+ 
